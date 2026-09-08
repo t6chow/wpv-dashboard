@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WPV Inspection Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="page">
+
+  <header class="page-header">
+    <h1>Workplace Violence Prevention</h1>
+    <p class="subtitle">Hospital inspection reporting, FFY 2022&ndash;2025</p>
+  </header>
+
+  <section class="stat-row" id="stat-row" aria-label="Key figures">
+    <!-- stat tiles injected by js/main.js -->
+  </section>
+
+  <section class="chart-card" aria-labelledby="reports-title">
+    <div class="chart-card-head">
+      <h2 id="reports-title">Total WPV reports by year</h2>
+      <p class="chart-subtitle">Reports submitted to Cal/OSHA, by federal fiscal year</p>
+    </div>
+    <div class="chart-body" id="chart-reports"></div>
+  </section>
+
+  <section class="chart-card" aria-labelledby="facilities-title">
+    <div class="chart-card-head">
+      <h2 id="facilities-title">Reporting facilities by year</h2>
+      <p class="chart-subtitle">Distinct HCAI-listed facilities that filed a report</p>
+    </div>
+    <div class="chart-body" id="chart-facilities"></div>
+  </section>
+
+  <section class="table-section">
+    <details>
+      <summary>View data as a table</summary>
+      <div class="table-wrap">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Report year</th>
+              <th scope="col">Total reports</th>
+              <th scope="col">Reporting facilities</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <section class="facility-lookup" aria-labelledby="lookup-title">
+    <div class="lookup-header">
+      <h2 id="lookup-title">Facility lookup</h2>
+      <p class="lookup-subtitle">Search for a facility to see if it reported WPV incidents</p>
+    </div>
+
+    <div class="lookup-controls">
+      <div class="year-selector">
+        <label for="year-select">Report year:</label>
+        <select id="year-select">
+          <option value="2024-2025">2024-2025</option>
+          <option value="2023-2024">2023-2024</option>
+          <option value="2022-2023">2022-2023</option>
+        </select>
+      </div>
+
+      <div class="search-box">
+        <label for="facility-search">Facility name:</label>
+        <div class="search-input-group">
+          <input
+            type="text"
+            id="facility-search"
+            placeholder="Search by facility name..."
+            autocomplete="off"
+          />
+          <button type="button" id="search-button" class="search-btn">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="search-results" class="search-results" role="status" aria-live="polite"></div>
+  </section>
+
+  <footer class="page-footer">
+    <p>Source: Cal/OSHA WPV inspection data exports and HCAI facility listings.
+       Generated <span id="generated-at"></span>.</p>
+  </footer>
+
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
