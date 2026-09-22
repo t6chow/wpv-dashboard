@@ -262,10 +262,12 @@ function performSearch() {
     return;
   }
 
-  const queryLower = query.toLowerCase();
-  const matches = facilityData.facilities.filter(f =>
-    f.name.toLowerCase().includes(queryLower)
-  );
+  // Split query into keywords and search for facilities that contain ALL keywords
+  const keywords = query.toLowerCase().trim().split(/\s+/);
+  const matches = facilityData.facilities.filter(f => {
+    const nameLower = f.name.toLowerCase();
+    return keywords.every(keyword => nameLower.includes(keyword));
+  });
 
   if (matches.length === 0) {
     resultsDiv.innerHTML = `<p class="search-no-results">No facilities found matching "${query}"</p>`;
